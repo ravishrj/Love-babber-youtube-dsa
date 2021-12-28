@@ -80,14 +80,14 @@ bool checkPalindrome(string ch)
     {
         ch[s]=lowercase(ch[s]);
         ch[e]=lowercase(ch[e]);
-       if(  ((ch[s]>='a'&&ch[s]<='z')||(ch[s]>='0'&&ch[s]<='1'))&&((ch[e]>='a'&&ch[e]<='z')||(ch[e]>='0'&&ch[e]<='1')))
+       if(  ((ch[s]>='a'&&ch[s]<='z')||(ch[s]>='0'&&ch[s]<='9'))&&((ch[e]>='a'&&ch[e]<='z')||(ch[e]>='0'&&ch[e]<='9')))
        {
          if(ch[s]!=ch[e])
            return false;
            s++;
            e--;
        }
-        else if((ch[s]>='a'&&ch[s]<='z')||(ch[s]>='0'&&ch[s]<='1'))
+        else if((ch[s]>='a'&&ch[s]<='z')||(ch[s]>='0'&&ch[s]<='9'))
             e--;
           else
               s++;
