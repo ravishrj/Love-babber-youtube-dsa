@@ -1,0 +1,112 @@
+ Two Sum
+Easy
+
+30825
+
+969
+
+Add to List
+
+Share
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Example 2:
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+Example 3:
+
+Input: nums = [3,3], target = 6
+Output: [0,1]
+ 
+
+Constraints:
+
+2 <= nums.length <= 104
+-109 <= nums[i] <= 109
+-109 <= target <= 109
+Only one valid answer exists.
+ 
+
+Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
+Accepted
+6,313,076
+Submissions
+13,034,823
+Seen this question in a real interview before?
+
+Yes
+
+No
+
+
+=========================================================================================================================================================================
+
+
+vector<int>ans;
+        int n=nums.size();
+        unordered_map<int,int>mp; 
+        for(int i=0;i<n;i++)
+        {
+            int rem=target-nums[i];
+            if(mp.find(rem)!=mp.end())
+                // mp.find() step will take O(1)
+            {
+                ans.push_back(i);
+                ans.push_back(mp[rem]);
+            }
+            else
+            {
+                mp[nums[i]]=i;
+            }
+        }
+        return ans;
+        
+        
+        =======================================================================================================
+        
+        //         vector<int> ans;
+//          vector<pair<int,int> > v;
+        
+//          int n=nums.size();
+//         for(int i=0;i<n;i++)
+//         {
+//            v.push_back(make_pair(nums[i],i));
+//         }
+//         sort(v.begin(),v.end());
+//         for(int i=1;i<n;i++)
+//         {
+//             int sum=v[i].first+v[i-1].first;
+//             if(sum==target)
+//             {
+//                 ans.push_back(v[i-1].second);
+//                 ans.push_back(v[i].second);
+//             }
+//         }
+//         return ans;
+
+        // for(int i=0;i<n-1;i++)
+        // {
+        //     for(int j=i+1;j<n;j++)
+        //     {
+        //         int sum=nums[i]+nums[j];
+        //         if(sum==target)
+        //         {
+        //             ans.push_back(i);
+        //             ans.push_back(j);
+        //             break;
+        //         }
+        //     }
+        // }
+        // return ans;
