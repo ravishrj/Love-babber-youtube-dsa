@@ -1,0 +1,89 @@
+28. Implement strStr()
+Easy
+
+3882
+
+3595
+
+Add to List
+
+Share
+Implement strStr().
+
+Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+Clarification:
+
+What should we return when needle is an empty string? This is a great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+
+ 
+
+Example 1:
+
+Input: haystack = "hello", needle = "ll"
+Output: 2
+Example 2:
+
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+ 
+
+Constraints:
+
+1 <= haystack.length, needle.length <= 104
+haystack and needle consist of only lowercase English characters.
+Accepted
+1,216,321
+Submissions
+3,402,084
+=================================================================================================================================================================
+
+class Solution {
+public:
+    int strStr(string haystick, string needle) {
+        if(needle.size()==0)
+            return 0;
+        int n=haystick.size();
+        int m=needle.size();
+        int i=0,j=0;
+        int ans=-1;
+        for(i=0;i<n;i++)
+        {
+            int s=i;
+            j=0;
+           if(haystick[i]==needle[j])
+           {
+               ans=i;
+               j++;i++;
+               while(j<m && i<n)
+               {
+                    if(haystick[i]!=needle[j])
+                    {
+                        ans=-1;
+                        
+                        break;
+                    }
+                   i++;
+                   j++;
+               }
+               if(j!=m)
+                   ans=-1;
+                else if(j==m)
+                   return ans;
+           }
+             i=s;
+        }
+        return ans;
+        //  for(int i=0;haystack[i];i++){
+        //     if(haystack[i]==needle[0]){
+        //         int s=1,j=i+1;
+        //         while(haystack[j]&&needle[s]&&(haystack[j]==needle[s])) // haystack[j]&&needle[s] is used to ensure that j and s do not go over the size . means while(str[i]) is same as while(i<str.size())
+        //             s++,j++;
+        //         if(s==needle.size())return i;
+        //     }
+        // }
+        // return -1;
+    }
+};
