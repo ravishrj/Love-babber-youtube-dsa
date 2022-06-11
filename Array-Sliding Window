@@ -1,0 +1,30 @@
+int main(void)
+{
+    int n,k;
+    cin>>n>>k;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+
+    }
+    int i=0,j=0;
+    int sum=0;
+    int finalanswer=INT16_MIN;
+    while(j<n)
+    {
+        sum+=arr[j];
+        if(j-i+1<k)
+        {
+            j++;
+        }else if(j-i+1==k)
+        {
+            finalanswer=max(finalanswer,sum);
+            sum-=arr[i];
+            i++;j++;
+
+
+        }
+    }
+    cout<<"The max sum of the subarray is : "<<finalanswer<<endl;
+}
